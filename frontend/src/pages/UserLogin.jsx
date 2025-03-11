@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { UserDataContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const UserLogin = () => {
   const [ email, setEmail ] = useState('')
@@ -25,6 +26,7 @@ const UserLogin = () => {
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData)
 
     if (response.status === 200) {
+      toast.success("Login successful!");
       const data = response.data
       setUser(data.user)
       localStorage.setItem('token', data.token)

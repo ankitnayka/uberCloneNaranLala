@@ -13,6 +13,8 @@ import { useContext } from 'react';
 import { UserDataContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import LiveTracking from '../components/LiveTracking';
+import Header from '../home/Header';
+import Footer from '../home/Footer';
 
 const Home = () => {
     const [ pickup, setPickup ] = useState('')
@@ -198,6 +200,8 @@ const Home = () => {
     }
 
     return (
+        <>
+        
         <div className='h-screen relative overflow-hidden'>
             <img className='w-16 absolute left-5 top-5' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
             <div className='h-screen w-screen'>
@@ -226,7 +230,7 @@ const Home = () => {
                             className='bg-[#eee] px-12 py-2 text-lg rounded-lg w-full'
                             type="text"
                             placeholder='Add a pick-up location'
-                        />
+                            />
                         <input
                             onClick={() => {
                                 setPanelOpen(true)
@@ -252,7 +256,7 @@ const Home = () => {
                         setPickup={setPickup}
                         setDestination={setDestination}
                         activeField={activeField}
-                    />
+                        />
                 </div>
             </div>
             <div ref={vehiclePanelRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-10 pt-12'>
@@ -267,7 +271,7 @@ const Home = () => {
                     destination={destination}
                     fare={fare}
                     vehicleType={vehicleType}
-
+                    
                     setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound} />
             </div>
             <div ref={vehicleFoundRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
@@ -287,6 +291,7 @@ const Home = () => {
                     waitingForDriver={waitingForDriver} />
             </div>
         </div>
+                    </>
     )
 }
 
