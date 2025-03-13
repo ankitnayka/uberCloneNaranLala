@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserDataContext } from "../context/UserContext";
 
 const Header = () => {
-    const user=true
+    
   return (
     <div className="w-full py-4 bg-black text-white flex  justify-around  cursor-pointer ">
         <div className="max-w-3xl flex px-8  items-center  ">

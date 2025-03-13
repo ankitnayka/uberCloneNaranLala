@@ -21,11 +21,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Suggestions from './home/Suggestions';
 import MoveToLogin from './home/MoveToLogin';
 import UberTravelSection from './home/UberTravelSection';
+import Profile from './components/Profile';
 
 // Layout Component to Wrap Header & Footer
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div >
       <Header />
       <div className="content">{children}</div>
       <MoveToLogin />
@@ -56,6 +57,7 @@ const App = () => {
         <Routes>
           <Route path='/start' element={<Start />} />
           <Route path='/login' element={<UserLogin />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/signup' element={<UserSignup />} />
           <Route path='/riding' element={<Riding />} />
           <Route path='/captain-riding' element={<CaptainRiding />} />

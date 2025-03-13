@@ -70,6 +70,75 @@ module.exports.getCaptainProfile = async (req, res, next) => {
     res.status(200).json({ captain: req.captain });
 }
 
+
+// module.exports.updateCaptainProfile=async(req,res,next)=>{
+//     const {fullname,email,password,color,plate,capacity,vehicleType}=req.body;
+
+//     const captain=req.captain;
+//     if(fullname){
+//         captain.firstname=fullname.firstname;
+//         captain.lastname=fullname.lastname;
+//     }
+//     if(email){
+//         captain.email=email;
+//     }   
+//     if(color){
+//         captain.vehicle.color=color;
+//     }
+   
+//     if(password){
+//         captain.password=await captainModel.hashPassword(password);
+//     }
+//     await captain.save();
+//     res.status(200).json({captain});
+// }
+module.exports.updateCaptainProfile = async (req, res, next) => {
+    try {
+        const { fullname, email, password, vehicle } = req.body; 
+        
+        const captain = req.captain;
+        if (!captain) {
+            return res.status(404).json({ message: "Captain not found" });
+        }
+
+        console.log(fullname)
+        if(fullname){
+            captain.firstname= fullname.firstname;
+            captain.lastname=fullname.lastname;
+            console.log("Hello ")
+        }
+       
+        
+        if (email) {
+            captain.email = email;
+        }
+
+        if (password) {
+            captain.password = await captainModel.hashPassword(password);
+        }
+
+        // Ensure captain.vehicle exists before updating
+        if (!captain.vehicle) {
+            captain.vehicle = {};
+        }
+
+        if (vehicle) {
+            captain.vehicle.color = vehicle.color || captain.vehicle.color;
+            captain.vehicle.plate = vehicle.plate || captain.vehicle.plate;
+            captain.vehicle.capacity = vehicle.capacity || captain.vehicle.capacity;
+            captain.vehicle.vehicleType = vehicle.vehicleType || captain.vehicle.vehicleType;
+        }
+
+    
+        await captain.save();
+        res.status(200).json({ captain });
+    } catch (error) {
+        console.error("Error updating captain profile:", error);
+        next(error);
+    }
+};
+
+
 module.exports.logoutCaptain = async (req, res, next) => {
     const token = req.cookies.token || req.headers.authorization?.split(' ')[ 1 ];
 

@@ -54,15 +54,15 @@ const UserSignup = () => {
   }
   return (
     <div>
-      <div className='p-7 h-screen flex flex-col justify-between'>
+      <div className='p-7 mt-10  md:max-w-7xl md:border-2 md:max-h-fit md:my-32 md:mx-auto rounded-lg h-screen flex flex-col justify-between'>
         <div>
-          <img className='w-16 mb-10' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYQy-OIkA6In0fTvVwZADPmFFibjmszu2A0g&s" alt="" />
-
+          {/* <img className='w-16 mb-10' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYQy-OIkA6In0fTvVwZADPmFFibjmszu2A0g&s" alt="UBERCLONE" /> */}
+          <h1 className='font-bold text-center  text-4xl'>Sign up </h1>
           <form onSubmit={(e) => {
             submitHandler(e)
           }}>
 
-            <h3 className='text-lg w-1/2  font-medium mb-2'>What's your name</h3>
+            <h3 className='text-lg w-1/2 md:mt-2 mt-4   font-medium mb-2'>What's your name</h3>
             <div className='flex gap-4 mb-7'>
               <input
                 required

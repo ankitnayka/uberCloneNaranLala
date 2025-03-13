@@ -36,7 +36,7 @@ const Captainlogin = () => {
     setPassword('')
   }
   return (
-    <div className='p-7 h-screen flex flex-col justify-between'>
+    <div className='p-7 mt-10  md:max-w-7xl md:border-2 md:max-h-fit md:my-32 md:mx-auto rounded-lg  h-screen flex flex-col justify-between'>
       <div>
         <img className='w-20 mb-3' src="https://www.svgrepo.com/show/505031/uber-driver.svg" alt="" />
 

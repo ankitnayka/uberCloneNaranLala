@@ -68,6 +68,43 @@ module.exports.getUserProfile = async (req, res, next) => {
 
 }
 
+module.exports.updateUserProfile = async (req, res, next) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const userId = req.user.id;
+        
+        const { fullname, email, password } = req.body;
+       
+        const user = await userModel.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if(fullname){
+            user.firstname= fullname.firstname
+            user.lastname=fullname.lastname;
+        }
+       
+        
+        if (email) {
+            user.email = email;
+        }
+        if (password) {
+            user.password = await userModel.hashPassword(password);
+        }
+
+        await user.save();
+        console.log(user);
+        res.status(200).json({ user });
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+}
+
 module.exports.logoutUser = async (req, res, next) => {
     res.clearCookie('token');
     const token = req.cookies.token || req.headers.authorization.split(' ')[ 1 ];

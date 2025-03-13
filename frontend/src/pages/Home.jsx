@@ -13,8 +13,7 @@ import { useContext } from 'react';
 import { UserDataContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import LiveTracking from '../components/LiveTracking';
-import Header from '../home/Header';
-import Footer from '../home/Footer';
+
 
 const Home = () => {
     const [ pickup, setPickup ] = useState('')
@@ -41,7 +40,7 @@ const Home = () => {
 
     const { socket } = useContext(SocketContext)
     const { user } = useContext(UserDataContext)
-
+console.log("user snki",user)
     useEffect(() => {
         socket.emit("join", { userType: "user", userId: user._id })
     }, [ user ])
@@ -202,11 +201,11 @@ const Home = () => {
     return (
         <>
         
-        <div className='h-screen relative overflow-hidden'>
+        <div className='h-screen mt-16 relative overflow-hidden'>
             <img className='w-16 absolute left-5 top-5' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
             <div className='h-screen w-screen'>
                 {/* image for temporary use  */}
-                <LiveTracking />
+                <LiveTracking/>
             </div>
             <div className=' flex flex-col justify-end h-screen absolute top-0 w-full'>
                 <div className='h-[30%] p-6 bg-white relative'>

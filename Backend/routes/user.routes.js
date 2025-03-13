@@ -22,7 +22,9 @@ router.post('/login', [
 
 router.get('/profile', authMiddleware.authUser, userController.getUserProfile)
 
-router.get('/logout', userController.logoutUser)
+router.post('/profile',authMiddleware.authUser ,userController.updateUserProfile)
+
+router.post('/logout',authMiddleware.authUser ,userController.logoutUser)
 
 
 

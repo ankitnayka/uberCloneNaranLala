@@ -4,14 +4,17 @@ const suugestionList = [
   {
     title: "Couriers",
     desc: "Uber makes same-day item delivery easier than ever",
+    img: "https://cn-geo1.uber.com/static/mobile-content/Courier.png",
   },
   {
-    title: "Couriers",
-    desc: "Uber makes same-day item delivery easier than ever",
+    title: "Reserve",
+    desc: "Reserve your ride in advance so you can relax on the day of your trip.",
+    img: "https://mobile-content.uber.com/uber_reserve/reserve_clock.png",
   },
   {
-    title: "Couriers",
-    desc: "Uber makes same-day item delivery easier than ever",
+    title: "Ride",
+    desc: "UGo anywhere with Uber. Request a ride, hop in, and go.",
+    img: "https://mobile-content.uber.com/launch-experience/ride.png"
   }
 ];
 
@@ -25,7 +28,7 @@ const Suggestions = () => {
         {
           // suugestionList.length >0 ?
           suugestionList.map((suggestioncard,index) => (
-            <SuggestionCard key={index} title={suggestioncard.title} desc={suggestioncard.desc} />
+            <SuggestionCard key={index} title={suggestioncard.title} img={suggestioncard.img} desc={suggestioncard.desc} />
           ))
         }
       </div>
@@ -35,7 +38,7 @@ const Suggestions = () => {
 
 export default Suggestions;
 
-const SuggestionCard = ({ title, desc }) => {
+const SuggestionCard = ({ title, desc,img }) => {
   return (
     <div className="bg-gray-100 mx-4 my-4 flex   mt-2 items-center rounded-2xl">
       <div className="w-2/3 p-4 md:p-8">
@@ -46,7 +49,7 @@ const SuggestionCard = ({ title, desc }) => {
       </div>
       <div className="w-1/3 p-2">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC_ZoF5GkG3to-uQ27JpAMIc7fhKrHS0W-kA&s"
+          src={img}
           alt="corires-women"
           className="w-full  object-cover rounded-xl  shadow-xl rouned  object-contain  transform transition-transform duration-300 ease-in-out hover:-translate-y-2"
         />
