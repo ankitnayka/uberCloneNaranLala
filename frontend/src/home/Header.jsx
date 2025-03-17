@@ -48,14 +48,20 @@ const Header = () => {
         </div>
 
         <ul className="hidden sm:flex font-mono list-none ml-8">
-          <Link to="/home">
-            <li className="px-2 hover:bg-gray-800 hover:rounded-xl transition-colors duration-300 ease-in-out">
-              Ride
-            </li>
-          </Link>
-          <li className="px-2 hover:bg-gray-800 hover:rounded-xl">Drive</li>
-          <li className="px-2 hover:bg-gray-800 hover:rounded-xl">Business</li>
-          <li className="px-2 hover:bg-gray-800 hover:rounded-xl">About</li>
+          {user?.email ? (
+            <>
+              <Link to="/home">
+                <li className="px-2 hover:bg-gray-800 hover:rounded-xl transition-colors duration-300 ease-in-out">
+                  Ride
+                </li>
+              </Link>
+              <li className="px-2 hover:bg-gray-800 hover:rounded-xl">Drive</li>
+              <li className="px-2 hover:bg-gray-800 hover:rounded-xl">
+                Business
+              </li>
+              <li className="px-2 hover:bg-gray-800 hover:rounded-xl">About</li>
+            </>
+          ) : null}
         </ul>
       </div>
 

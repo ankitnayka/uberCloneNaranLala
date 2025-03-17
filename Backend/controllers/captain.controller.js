@@ -117,7 +117,6 @@ module.exports.updateCaptainProfile = async (req, res, next) => {
             captain.password = await captainModel.hashPassword(password);
         }
 
-        // Ensure captain.vehicle exists before updating
         if (!captain.vehicle) {
             captain.vehicle = {};
         }

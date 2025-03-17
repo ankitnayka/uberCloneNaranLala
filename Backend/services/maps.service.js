@@ -79,7 +79,7 @@ export const getDistanceTime = async (origin, destination) => {
     }
 
     try {
-        // Get coordinates for both locations
+    
         const result1 = await getAddressCoordinate(origin);
         const result2 = await getAddressCoordinate(destination);
      
@@ -89,18 +89,17 @@ export const getDistanceTime = async (origin, destination) => {
         const endLat = result2.ltd;
 
 
-        // OpenRouteService Directions API call
+        
         const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${API_KEY}&start=${startLng},${startLat}&end=${endLng},${endLat}`;
 
         const response = await axios.get(url);
-    
-                // Check if the response contains valid data
+
                 if (response.data.features && response.data.features.length > 0) {
                     const segment = response.data.features[0].properties.segments[0]; // Corrected path
         
                     return {
-                        distance: segment.distance / 1000, // Convert meters to km
-                        duration: segment.duration / 60   // Convert seconds to minutes
+                        distance: segment.distance / 1000, //  meters to km
+                        duration: segment.duration / 60   //  seconds to minutes
                     };
                 } else {
                     throw new Error("No route found for the given locations");
