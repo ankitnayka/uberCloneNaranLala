@@ -54,8 +54,8 @@ module.exports.getFare = async (req, res) => {
     const { pickup, destination } = req.query;
     
     try {
-        const fare = await rideService.getFare(pickup, destination);
-        return res.status(200).json(fare);
+        const {fare,distanceTime} = await rideService.getFare(pickup, destination);
+        return res.status(200).json({fare,distanceTime});
     } catch (err) {
         return res.status(500).json({ message:"no rider between pickup to destination" });
     }

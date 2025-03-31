@@ -40,7 +40,7 @@ async function getFare(pickup, destination) {
         moto: Math.round(baseFare.moto + (distanceTime.distance * perKmRate.moto) + (distanceTime.duration * perMinuteRate.moto))
     };
 
-    return fare;
+    return {fare,distanceTime};
 
 
 }

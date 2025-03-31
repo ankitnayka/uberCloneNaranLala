@@ -19,6 +19,7 @@ const Home = () => {
   const [pickup, setPickup] = useState("");
   const [destination, setDestination] = useState("");
   const [panelOpen, setPanelOpen] = useState(false);
+  const [distanceAndDuration,setDistanceAndDUration]=useState("")
   const vehiclePanelRef = useRef(null);
   const confirmRidePanelRef = useRef(null);
   const vehicleFoundRef = useRef(null);
@@ -196,8 +197,9 @@ const Home = () => {
           },
         }
       );
-
-      setFare(response.data);
+      console.log("Get fare data time ",response.data)
+      setFare(response?.data?.fare);
+      setDistanceAndDUration(response?.data?.distanceTime)
     } catch (error) {
         toast.error(error.response.data.message);
         navigate("/home");
@@ -303,6 +305,7 @@ const Home = () => {
           <VehiclePanel
             selectVehicle={setVehicleType}
             fare={fare}
+            distanceTime={distanceAndDuration}
             setConfirmRidePanel={setConfirmRidePanel}
             setVehiclePanel={setVehiclePanel}
           />

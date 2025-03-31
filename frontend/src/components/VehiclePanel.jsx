@@ -1,12 +1,20 @@
 import React from 'react'
 
 const VehiclePanel = (props) => {
+    console.log("Vehicle props",props)
     return (
         <div>
             <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={() => {
                 props.setVehiclePanel(false)
             }}><i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
+            <div className='flex justify-between'>
+
             <h3 className='text-2xl font-semibold mb-5'>Choose a Vehicle</h3>
+            
+            </div>
+            <h3 className='text-2xl font-semibold mb-5'>your Destinace <span className='text-green-600'> {Math.round(props?.distanceTime?.distance)}Km away </span> 
+                & its take <span className='text-green-600'>{Math.round(props?.distanceTime?.duration)}</span> minutes
+            </h3>
             <div onClick={() => {
                 props.setConfirmRidePanel(true)
                 props.selectVehicle('car')
